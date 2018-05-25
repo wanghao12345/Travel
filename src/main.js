@@ -5,7 +5,8 @@ import App from './App'
 import router from './router'
 // 解决300ms延迟
 import FastClick from 'fastclick'
-import './assets/styles/reset.css'
+import 'styles/reset.css'
+import 'styles/iconfont.css'
 
 Vue.config.productionTip = false
 FastClick.attach(document.body)
