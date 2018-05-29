@@ -25,7 +25,7 @@ export default {
   computed: {
     showSwiper () {
       return this.list.length
-    }    
+    }
   }
 }
 </script>
