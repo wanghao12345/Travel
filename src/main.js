@@ -6,6 +6,7 @@ import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 // 解决300ms延迟
 import FastClick from 'fastclick'
+import store from './store'
 import 'styles/reset.css'
 import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
@@ -17,6 +18,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

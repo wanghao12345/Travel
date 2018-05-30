@@ -13,6 +13,7 @@
           class="search-item border-bottom"
           v-for="item of list"
           :key="item.id"
+          @click="handleCityClick(item.name)"
         >
           {{item.name}}
         </li>
@@ -67,6 +68,16 @@ export default{
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.search)
+  },
+  methods: {
+    // vuex发送改变城市请求
+    handleCityClick (city) {
+      // 调用actions里面的changeCity方法
+      this.$store.dispatch('changeCity', city)
+      // 跳过调用acitions里面的方法，直接调用mutations里面的changeCity方法
+      // this.$store.commit('changeCity', city)
+      this.keyword = ''
+    }
   }
 }
 </script>
