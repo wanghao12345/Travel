@@ -1,18 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container" @click="handleGallaryClick">
     <div class="wrapper">
       <swiper :options="swiperOption">
-        <swiper-slide>
-          <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1801/56/568ebf34301216dfa3.img.jpg_350x240_ead0df92.jpg" />
-        </swiper-slide>
-        <swiper-slide>
-          <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1801/4d/4db181dbf5a630bea3.img.jpg_350x240_e7511b4e.jpg" />
-        </swiper-slide>
-        <swiper-slide>
-          <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1801/45/450030bd6133de20a3.img.jpg_350x240_880023b1.jpg" />
-        </swiper-slide>
-        <swiper-slide>
-          <img class="gallary-img" src="http://img1.qunarzz.com/sight/p0/1801/d2/d2b63b96cbb14b61a3.img.jpg_350x240_4ce7216c.jpg" />
+        <swiper-slide
+          v-for="(item, index) in imgs"
+          :key="index"
+        >
+          <img class="gallary-img" :src="item" />
         </swiper-slide>
         <div class="swiper-pagination"  slot="pagination"></div>
       </swiper>
@@ -23,12 +17,27 @@
 <script>
 export default {
   name: 'CommonGallery',
+  props: {
+    imgs: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
   data () {
     return {
       swiperOption: {
         pagination: 'swiper-pagination',
-        paginationType: 'fraction'
+        paginationType: 'fraction',
+        observeParants: true,
+        observe: true
       }
+    }
+  },
+  methods: {
+    handleGallaryClick () {
+      this.$emit('close')
     }
   }
 }
