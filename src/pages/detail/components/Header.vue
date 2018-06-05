@@ -32,14 +32,18 @@ export default {
       }
     }
   },
-  // 使用了keep-alive,就会执行activated
+  // 使用了keep-alive,每次打开页面就会执行activated
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  // 页面即将被隐藏，将离开本页面的时候将会执行
+  deactivated () {
+    // 去掉全局事件，防止其它页面也会执行该方法
+    window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     handleScroll () {
       const top = document.documentElement.scrollTop
-      console.log(top)
       if (top > 60) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
