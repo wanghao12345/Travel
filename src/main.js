@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+// 解决手机展示白屏的解决方案
+import 'babel-polyfill'
 // 解决300ms延迟
 import FastClick from 'fastclick'
 import store from './store'
