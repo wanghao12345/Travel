@@ -12,9 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8080',
+        // target: 'http://localhost:8080', // 本地数据
+        target: 'http://localhost',
         pathRewrite: {
-          '^/api': '/static/mock'
+          // '^/api': '/static/mock' // 本地数据
+          '^/api': '/api'
         }
       }
     },
