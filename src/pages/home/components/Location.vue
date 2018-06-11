@@ -1,11 +1,15 @@
 <template>
   <div class="container">
-    <div class="location-icon">
-      <div class="iconfont">&#xe611;</div>
-    </div>
-    <div class="location-info">
-      定位失败
-    </div>
+    <router-link
+      tag="div"
+      to="/location">
+      <div class="location-icon">
+        <div class="iconfont">&#xe611;</div>
+      </div>
+      <div class="location-info">
+        定位失败
+      </div>
+    </router-link>
   </div>
 </template>
 
