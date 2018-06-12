@@ -1,15 +1,23 @@
 <template>
-  <div class="header">
-    <router-link
-      class="header-left"
-      tag="div"
-      to="/"
-    >
-      <div class="iconfont">&#xe65b;</div>
-    </router-link>
-    <div class="header-input">
-      <span class="iconfont">&#xe605;</span>
-      <input class="input" placeholder="请输入地址" type="text">
+  <div>
+    <div class="header">
+      <router-link
+        class="header-left"
+        tag="div"
+        to="/"
+      >
+        <div class="iconfont">&#xe65b;</div>
+      </router-link>
+      <div class="header-input">
+        <span class="iconfont">&#xe605;</span>
+        <input
+          class="input"
+          id="searchText"
+          ref="searchText"
+          placeholder="请输入地址"
+          type="text"
+        >
+      </div>
     </div>
   </div>
 </template>
