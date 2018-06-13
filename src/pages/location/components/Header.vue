@@ -15,7 +15,9 @@
           id="searchText"
           ref="searchText"
           placeholder="请输入地址"
+          v-model='inputValue'
           type="text"
+          @input="handleSearch"
         >
       </div>
     </div>
@@ -23,8 +25,36 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'LocationHeader'
+  name: 'LocationHeader',
+  data () {
+    return {
+      inputValue: '',
+      timer: null,
+      addressData: []
+    }
+  },
+  mounted () {
+
+  },
+  methods: {
+    handleSearch () {
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      if (this.inputValue) {
+        this.timer = setTimeout(() => {
+          axios.get('http://elm.cangdu.org/v1/pois?type=search&city_id=1&keyword=' + this.inputValue)
+            .then(this.handleSearchSucc)
+        }, 100)
+      }
+    },
+    handleSearchSucc (res) {
+      this.addressData = res.data
+      this.$emit('getAddressData', this.addressData)
+    }
+  }
 }
 </script>
 

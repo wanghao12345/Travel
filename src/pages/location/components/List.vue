@@ -5,9 +5,12 @@
         定位当前地址
     </div>
     <div class="list">
-      <div class="item">
-        <p class="location-title">西门车站(公交站)</p>
-        <p class="location-detail">四川省成都市4路;7路;11路;7路;11路;</p>
+      <div class="item" v-show="!addressList.length">
+        <p class="location-detail">暂无无搜索内容</p>
+      </div>
+      <div class="item" v-for="(item, index) of addressList" :key="index">
+        <p class="location-title">{{item.name}}</p>
+        <p class="location-detail">{{item.address}}</p>
       </div>
     </div>
   </div>
@@ -15,7 +18,10 @@
 
 <script>
 export default {
-  name: 'LocationList'
+  name: 'LocationList',
+  props: {
+    addressList: Array
+  }
 }
 </script>
 

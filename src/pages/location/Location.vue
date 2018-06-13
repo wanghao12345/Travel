@@ -1,7 +1,7 @@
 <template>
   <div>
-    <location-header></location-header>
-    <location-list></location-list>
+    <location-header @getAddressData="handleGetAddress"></location-header>
+    <location-list :addressList="addressList"></location-list>
   </div>
 </template>
 
@@ -10,9 +10,20 @@ import LocationHeader from './components/Header'
 import LocationList from './components/List'
 export default {
   name: 'Location',
+  data () {
+    return {
+      addressList: []
+    }
+  },
   components: {
     LocationHeader,
     LocationList
+  },
+  methods: {
+    handleGetAddress (data) {
+      this.addressList = data
+      console.log(data)
+    }
   }
 }
 </script>
